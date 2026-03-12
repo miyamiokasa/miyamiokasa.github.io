@@ -1,11 +1,245 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>My Site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Bestie! 🎉</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff69b4, #ffc0cb, #ffb6c1, #ff1493);
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: white;
+            position: relative;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 40px;
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        h1 {
+            font-size: 3em;
+            text-shadow: 0 0 20px #ff1493;
+            margin-bottom: 30px;
+        }
+        .message-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+            gap: 25px;
+        }
+        .message-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(255,105,180,0.6);
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        .message-text {
+            font-size: 1.4em;
+            max-width: 400px;
+            text-align: left;
+        }
+        
+       
+        .floating {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            font-size: 25px;
+        }
+        .heart { color: #ff69b4; animation: floatUp 8s linear infinite; }
+        .flower { color: #ff1493; animation: floatUp 10s linear infinite; }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .upload-zone {
+            border: 3px dashed #ff1493;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            background: rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .upload-zone:hover {
+            background: rgba(255,105,180,0.2);
+            border-color: white;
+        }
+        button {
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(255,105,180,0.4);
+            transition: all 0.3s;
+        }
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(255,105,180,0.6);
+        }
+        .gallery {
+            display: none;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .gallery.show { display: flex; }
+        .gallery img, .gallery video {
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(255,105,180,0.5);
+        }
+    </style>
 </head>
-
 <body>
-<h1>Hello from my GitHub Website 🎉</h1>
-<p>My site works!</p>
+    
+    <div id="floatingContainer"></div>
+    
+    <div class="container">
+        <h1>Happy Birthday, Bestie! 💖</h1>
+        
+        
+        <div class="message-row">
+            <img src="sticker copy.jpg" alt="Your photo" class="message-img" id="img1">
+            <div class="message-text">You're the pink to my sparkle and the best friend anyone could ask for!</div>
+        </div>
+        
+        <div class="message-row">
+            <img src="p1.jpg" alt="Your photo" class="message-img" id="img2">
+            <div class="message-text">ayayyyy chwiibaa dyali 🌸</div>
+        </div>
+         <div class="message-row">
+            <img src="p4.jpg" alt="Your photo" class="message-img" id="img1">
+            <div class="message-text">just ka5oucha </div>
+        </div>
+        <div class="message-row">
+            <img src="p7.jpg" alt="Your photo" class="message-img" id="img1">
+            <div class="message-text">okay kiyoo</div>
+        </div>
+            <div class="message-row">
+                <img src="p3.jpg" alt="Your photo" class="message-img" id="img1">
+                <div class="message-text">You're the pink to my sparkle and the best friend anyone could ask for!</div>
+            </div>  
+             <div class="message-row">
+                <img src="sticker copy.jpg" alt="Your photo" class="message-img" id="img1">
+                <div class="message-text">aya mgrda 3jbtni hadi nihinihi</div>
+            </div>
+        
+        <div class="message-row">
+            <img src="p8.jpg" alt="Your photo" class="message-img" id="img3">
+            <div class="message-text">Here's to another year of adventures together >>> tbahdayl ahmm 🥳</div>
+        </div>
+        
+        <div class="upload-zone" onclick="fileInput.click()">
+            📸 DRAG YOUR PHOTOS HERE or CLICK
+            <input type="file" id="fileInput" multiple accept="image/*" style="display:none;">
+        </div>
+        
+        <button onclick="toggleGallery()">Show Memories 💕 (0 photos)</button>
+        <div class="gallery" id="gallery"></div>
+    </div>
+
+    <script>
+    
+        function createFloating() {
+            const container = document.getElementById('floatingContainer');
+            const emojis = ['💖','💕','🌸','💗','🌺','✨','💝','🌷'];
+            setInterval(() => {
+                const emoji = document.createElement('div');
+                emoji.className = 'floating ' + (Math.random() > 0.5 ? 'heart' : 'flower');
+                emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.left = Math.random() * 100 + 'vw';
+                emoji.style.animationDuration = (6 + Math.random() * 4) + 's';
+                container.appendChild(emoji);
+                setTimeout(() => emoji.remove(), 12000);
+            }, 300);
+        }
+        createFloating();
+
+        
+        let photoCount = 0;
+        const gallery = document.getElementById('gallery');
+        const btn = document.querySelector('button');
+        const uploadZone = document.querySelector('.upload-zone');
+        const fileInput = document.getElementById('fileInput');
+
+        uploadZone.ondrop = function(e) {
+            e.preventDefault();
+            handleFiles(e.dataTransfer.files);
+        };
+        uploadZone.ondragover = function(e) { e.preventDefault(); };
+        fileInput.onchange = function() { handleFiles(fileInput.files); };
+
+        function handleFiles(files) {
+            Array.from(files).forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        // Replace side images with YOUR photos
+                        const sideImgs = document.querySelectorAll('.message-img');
+                        if (sideImgs[photoCount % sideImgs.length]) {
+                            sideImgs[photoCount % sideImgs.length].src = e.target.result;
+                        }
+                        photoCount++;
+                        btn.textContent = `Show Memories 💕 (${photoCount} photos)`;
+                        
+                    
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        gallery.appendChild(img);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        function toggleGallery() {
+            if (gallery.classList.contains('show')) {
+                gallery.classList.remove('show');
+                btn.textContent = `Show Memories 💕 (${photoCount} photos)`;
+            } else {
+                if (photoCount === 0) alert('Drag photos to pink box first! 💕');
+                else {
+                    gallery.classList.add('show');
+                    btn.textContent = `Hide Memories ✨ (${photoCount} photos)`;
+                }
+            }
+        }
+    </script>
 </body>
 </html>
